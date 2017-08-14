@@ -44,7 +44,7 @@ SO_FILES := $(patsubst $(SRC_DIR)/%_binder.cpp, $(OUTPUT_DIR)/%.so, $(SRCBINDER_
 # Conventions suggest an overall INCLUDE_FLAGS.
 INCLUDE_FLAGS := $(addprefix -I,$(INCLUDE_DIR))
 
-CXXFLAGS := -O3 -shared -std=c++11 `python-config --cflags --ldflags`
+CXXFLAGS := -O3 -shared -std=c++11 `python-config --cflags --ldflags` -fPIC
 
 all: make_dir $(SO_FILES)
 
