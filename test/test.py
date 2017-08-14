@@ -14,7 +14,7 @@ else:
 import socket
 if socket.gethostname() == 'CIS-3211-64950':
 	user_dir = '/Users/n01237497'
-elif socket.gethostname() == 'Xudongs-MacBook-Pro':
+elif socket.gethostname() == 'Xudongs-MacBook-Pro.local':
 	user_dir = '/Users/xudong'
 elif socket.gethostname() == 'cisvm-xudong-1':
 	user_dir = '/home/xudong'
