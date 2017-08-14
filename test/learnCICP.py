@@ -3,8 +3,25 @@
 import os
 import sys
 cwd = os.getcwd()
-print cwd
-sys.path.append(cwd + '/../out/gccdarwin64/')
+#print cwd
+if sys.platform.startswith('darwin'):
+	sys.path.append(cwd + '/../out/gccdarwin64/')
+elif sys.platform.startswith('linux'):
+	sys.path.append(cwd + '/../out/gcclinux64/')
+else:
+	sys.path.append(cwd + '/../out/gcccygwin64/')
+
+import socket
+if socket.gethostname() == 'CIS-3211-64950':
+	user_dir = '/Users/n01237497'
+elif socket.gethostname() == 'Xudongs-MacBook-Pro':
+	user_dir = '/Users/xudong'
+elif socket.gethostname() == 'cisvm-xudong-1':
+	user_dir = '/home/xudong'
+elif socket.gethostname() == 'cisvm-xudong-2':
+	user_dir = '/home/xudong'
+else:
+	sys.exit('Wrong user!')
 
 import mytypes
 import helper
@@ -21,11 +38,11 @@ bitMapTrainStrictExamples = mytypes.vi()
 trainStrictExamples = mytypes.vpii()
 bitMapIssues = mytypes.vi()
 domains = mytypes.vpIssDom()
-domainDescriptionFile = '/Users/xudong/Codes/PrefLearnLibGenerator/PrefLearnLib/UCI/CarEvaluation/domain_description.txt'
+domainDescriptionFile = user_dir + '/Codes/PrefLearnLibGenerator/PrefLearnLib/UCI/CarEvaluation/domain_description.txt'
 outcomes = mytypes.umIntVstring()
-outcomesFile = '/Users/xudong/Codes/PrefLearnLibGenerator/PrefLearnLib/UCI/CarEvaluation/outcomes.csv'
+outcomesFile = user_dir + '/Codes/PrefLearnLibGenerator/PrefLearnLib/UCI/CarEvaluation/outcomes.csv'
 testStrictExamples = mytypes.vpii()
-strictExamplesFile = '/Users/xudong/Codes/PrefLearnLibGenerator/PrefLearnLib/UCI/CarEvaluation/strict_examples.csv'
+strictExamplesFile = user_dir + '/Codes/PrefLearnLibGenerator/PrefLearnLib/UCI/CarEvaluation/strict_examples.csv'
 numTrainStrictExamples = 10
 
 utils.getDomains(bitMapIssues, domains, domainDescriptionFile)
